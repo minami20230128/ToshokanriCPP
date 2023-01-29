@@ -1,0 +1,145 @@
+#include "bookshelf.h"
+#include "main.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <boost/algorithm/string.hpp>
+
+int main()
+{
+    int number = menu();
+    
+    switch(number)
+    {
+        case 1:
+            showAllBooks();
+        case 2:
+            showAllBooksByAuthor();
+        case 3:
+            searchBooksByTitle();
+        case 4:
+            searchBooksByAuthor();
+        case 5:
+            addBooks();
+        case 6:
+            deleteBooks();
+        case 7:
+            saveBooks();
+        case 8:
+            loadBooks();
+        case 9:
+            modifyBooks();
+    }
+
+    return 0;
+}
+
+int menu()
+{
+    std::cout << "メニューを選択して下さい。" << std::endl;
+    std::cout << "1.全ての書籍を見る" << std::endl;
+    std::cout << "2.著者別に書籍を見る" << std::endl;
+    std::cout << "3.書籍を検索する" << std::endl;
+    std::cout << "4.書籍を著者名から検索する" << std::endl;
+    std::cout << "5.書籍を追加する" << std::endl;
+    std::cout << "6.書籍を削除する" << std::endl;
+    std::cout << "7.書籍情報を保存する" << std::endl;
+    std::cout << "8.書籍情報を読み込む" << std::endl;
+    std::cout << "9.書籍情報を修正する" << std::endl;
+
+    int number;
+    std::cin >> number;
+
+    return number;
+}
+
+void showAllBooks()
+{
+    std::vector <Book> tmpbooklist = bookshelf.getBookshelf();
+    for(auto book : tmpbooklist)
+    {
+        showBook(book);
+    }
+}
+
+void showAllBooksByAuthor()
+{
+
+}
+
+void searchBooksByTitle()
+{
+
+}
+
+void searchBooksByAuthor()
+{
+
+}
+
+void addBooks()
+{
+
+}
+
+void deleteBooks()
+{
+
+}
+
+void saveBooks()
+{
+
+}
+
+void loadBooks()
+{
+    std::cout << "読み込むファイルの名前を入力して下さい。" << std::endl;
+    std::string filename;
+    std::cin >> filename;
+
+    std::ifstream file(filename);
+    std::string line;
+    std::vector<Book> tmpbooklist;
+
+    while(std::getline(file, line))
+    {
+        std::vector<std::string> bookinfos, authors;
+        
+        boost::split(bookinfos, line, boost::is_any_of(","));
+
+        std::string title = bookinfos[0];
+        std::string publisher = bookinfos[1];
+        std::string date = bookinfos[2];
+
+        auto itr = bookinfos.begin() + 3;
+
+        while (itr != bookinfos.end())
+        {
+            authors.push_back(*itr);
+            itr++;
+        }
+
+        Book book(title, publisher, date, authors);
+        tmpbooklist.push_back(book);
+    }
+
+    bookshelf.setBookshelf(tmpbooklist);
+}
+
+void modifyBooks()
+{
+
+}
+    
+void showBook(Book book)
+{
+    std::cout << book.getTitle() << std::endl;
+    std::cout << book.getPublisher() << std::endl;
+    std::cout << book.getDate() << std::endl;
+
+    for(auto author : book.getAuthor())
+    {
+        std::cout << author << std::endl;
+    }
+}
