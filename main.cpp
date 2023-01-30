@@ -87,6 +87,15 @@ void deleteBooks()
     std::cout << "消去したい書籍の題名を入力してください。" << std::endl;
     std::string title;
     std::cin >> title;
+    auto book = bookshelf.searchBook(title);
+    std::cout << "以下の書籍を削除しますか？y/n" << std::endl;
+    showBook(book);
+    std::string yn;
+    std::cin >> yn;
+    if(yn == "y")
+    {
+        bookshelf.deletebook(title);
+    }
 }
 
 void saveBooks()
