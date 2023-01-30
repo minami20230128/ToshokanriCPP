@@ -84,7 +84,9 @@ void addBooks()
 
 void deleteBooks()
 {
-
+    std::cout << "消去したい書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
 }
 
 void saveBooks()
