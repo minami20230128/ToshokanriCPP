@@ -5,6 +5,8 @@
 #include <sstream>
 #include <boost/algorithm/string.hpp>
 
+//コンパイル方法　g++ -std=c++11 main.cpp -o 実行ファイル名（何でもいい）
+
 int main()
 {
     int number = menu();
@@ -92,6 +94,7 @@ void deleteBooks()
     showBook(book);
     std::string yn;
     std::cin >> yn;
+
     if(yn == "y")
     {
         bookshelf.deletebook(title);
