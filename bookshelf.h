@@ -44,4 +44,19 @@ class Bookshelf
                 }
             }
         }
+
+        Book searchBookByAuthor(std::string searchingAuthor)
+        {
+            for(auto book : booklist)
+            {
+                auto authors = book.getAuthors();
+                for(auto author : authors)
+                {
+                    if(author == searchingAuthor)
+                    {
+                        return book;
+                    }
+                }
+            }
+        }
 };

@@ -66,17 +66,25 @@ void showAllBooks()
 
 void showAllBooksByAuthor()
 {
-
+    
 }
 
 void searchBooksByTitle()
 {
-
+    std::cout << "検索したい書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
+    auto book = bookshelf.searchBook(title);
+    showBook(book);
 }
 
 void searchBooksByAuthor()
 {
-
+    std::cout << "検索したい書籍の著者名を入力してください。" << std::endl;
+    std::string author;
+    std::cin >> author;
+    auto book = bookshelf.searchBookByAuthor(author);
+    showBook(book);
 }
 
 void addBooks()
@@ -152,7 +160,7 @@ void showBook(Book book)
     std::cout << book.getPublisher() << std::endl;
     std::cout << book.getDate() << std::endl;
 
-    for(auto author : book.getAuthor())
+    for(auto author : book.getAuthors())
     {
         std::cout << author << std::endl;
     }
