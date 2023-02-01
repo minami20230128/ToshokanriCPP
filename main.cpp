@@ -89,6 +89,18 @@ void searchBooksByAuthor()
 
 void addBooks()
 {
+    std::cout << "書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
+    std::cout << "書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
+    std::cout << "書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
+    std::cout << "書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
 
 }
 
