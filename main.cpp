@@ -89,19 +89,41 @@ void searchBooksByAuthor()
 
 void addBooks()
 {
-    std::cout << "書籍の題名を入力してください。" << std::endl;
-    std::string title;
-    std::cin >> title;
-    std::cout << "書籍の出版社名を入力してください。" << std::endl;
-    std::string publisher;
-    std::cin >> publisher;
-    std::cout << "書籍の出版年月日を入力してください。" << std::endl;
-    std::string date;
-    std::cin >> date;
-    std::cout << "書籍の著者を入力してください。" << std::endl;
-    std::string author;
-    std::cin >> author;
+    std::cout << "書籍の冊数を入力してください。" << std::endl;
+    int index;
+    std::cin >> index;
+    std::string title, publisher, date;
+    std::vector<std::string> authors;
+    std::vector<Book> books;
 
+    for(int i= 0; i<index;i++)
+    {
+        std::cout << "書籍の題名を入力してください。" << std::endl;
+        
+        std::cin >> title;
+        std::cout << "書籍の出版社名を入力してください。" << std::endl;
+        std::string publisher;
+        std::cin >> publisher;
+        std::cout << "書籍の出版年月日を入力してください。" << std::endl;
+        std::string date;
+        std::cin >> date;
+        std::cout << "書籍の著者の人数を入力してください。" << std::endl;
+        int authornumber;
+        std::cin >> authornumber;
+        
+        for(int i=0;i<<authornumber;i++)
+        {
+            std::cout << "書籍の著者を入力してください。" << std::endl;
+            std::string author;
+            std::cin >> author;
+            authors.push_back(author);
+        }
+
+        Book book(title, publisher, date, authors);
+        books.push_back(book);
+    }
+
+    bookshelf.setBookshelf(books);
 }
 
 void deleteBooks()
