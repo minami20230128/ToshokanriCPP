@@ -33,7 +33,7 @@ class Book
             return this->date;
         }
 
-        std::vector<std::string> getAuthor()
+        std::vector<std::string> getAuthors()
         {
             return this->authors;
         }

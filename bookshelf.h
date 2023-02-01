@@ -28,7 +28,34 @@ class Bookshelf
             {
                 if (itr->getTitle() == title)
                 {
-                    booklist.erase(itr);
+                    itr = booklist.erase(itr);
+                    break;
+                }
+            }
+        }
+
+        Book searchBook(std::string title)
+        {
+            for(auto book : booklist)
+            {
+                if(book.getTitle() == title)
+                {
+                    return book;
+                }
+            }
+        }
+
+        Book searchBookByAuthor(std::string searchingAuthor)
+        {
+            for(auto book : booklist)
+            {
+                auto authors = book.getAuthors();
+                for(auto author : authors)
+                {
+                    if(author == searchingAuthor)
+                    {
+                        return book;
+                    }
                 }
             }
         }
