@@ -92,15 +92,15 @@ void addBooks()
     std::cout << "書籍の題名を入力してください。" << std::endl;
     std::string title;
     std::cin >> title;
-    std::cout << "書籍の題名を入力してください。" << std::endl;
-    std::string title;
-    std::cin >> title;
-    std::cout << "書籍の題名を入力してください。" << std::endl;
-    std::string title;
-    std::cin >> title;
-    std::cout << "書籍の題名を入力してください。" << std::endl;
-    std::string title;
-    std::cin >> title;
+    std::cout << "書籍の出版社名を入力してください。" << std::endl;
+    std::string publisher;
+    std::cin >> publisher;
+    std::cout << "書籍の出版年月日を入力してください。" << std::endl;
+    std::string date;
+    std::cin >> date;
+    std::cout << "書籍の著者を入力してください。" << std::endl;
+    std::string author;
+    std::cin >> author;
 
 }
 
