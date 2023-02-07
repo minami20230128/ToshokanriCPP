@@ -6,6 +6,8 @@
 #include <boost/algorithm/string.hpp>
 
 //コンパイル方法　g++ -std=c++11 main.cpp -o 実行ファイル名（何でもいい）
+//git push ToshokanriCPP main
+
 
 int main()
 {
