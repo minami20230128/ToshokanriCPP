@@ -1,0 +1,1 @@
+書籍名,book,出版社名,publisher,出版年月日,20230401,著者,author

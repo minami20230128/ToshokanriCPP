@@ -5,36 +5,47 @@
 #include <sstream>
 #include <boost/algorithm/string.hpp>
 
-//コンパイル方法　g++ -std=c++11 main.cpp -o 実行ファイル名（何でもいい）
+//コンパイル方法　g++ -std=c++17 main.cpp -o 実行ファイル名（何でもいい）
 //git push ToshokanriCPP main
 
 
 int main()
 {
-    int number = menu();
-    
-    switch(number)
+    while(1)
     {
-        case 1:
-            showAllBooks();
-        case 2:
-            showAllBooksByAuthor();
-        case 3:
-            searchBooksByTitle();
-        case 4:
-            searchBooksByAuthor();
-        case 5:
-            addBooks();
-        case 6:
-            deleteBooks();
-        case 7:
-            saveBooks();
-        case 8:
-            loadBooks();
-        case 9:
-            modifyBooks();
+        int number = menu();
+        switch(number)
+        {
+            case 1:
+                showAllBooks();
+                break;
+            case 2:
+                showAllBooksByAuthor();
+                break;
+            case 3:
+                searchBooksByTitle();
+                break;
+            case 4:
+                searchBooksByAuthor();
+                break;
+            case 5:
+                addBooks();
+                break;
+            case 6:
+                deleteBooks();
+                break;
+            case 7:
+                saveBooks();
+                break;
+            case 8:
+                loadBooks();
+                break;
+            case 9:
+                modifyBooks();
+                break;
+        }
     }
-
+    
     return 0;
 }
 
@@ -60,7 +71,7 @@ int menu()
 void showAllBooks()
 {
     std::vector <Book> tmpbooklist = bookshelf.getBookshelf();
-    for(auto book : tmpbooklist)
+    for(auto&& book : tmpbooklist)
     {
         showBook(book);
     }
@@ -98,7 +109,7 @@ void addBooks()
     std::vector<std::string> authors;
     std::vector<Book> books;
 
-    for(int i= 0; i<index;i++)
+    for(int i = 0; i < index; i++)
     {
         std::cout << "書籍の題名を入力してください。" << std::endl;
         
@@ -113,7 +124,7 @@ void addBooks()
         int authornumber;
         std::cin >> authornumber;
         
-        for(int i=0;i<<authornumber;i++)
+        for(int i = 0; i < authornumber; i++)
         {
             std::cout << "書籍の著者を入力してください。" << std::endl;
             std::string author;
@@ -147,7 +158,27 @@ void deleteBooks()
 
 void saveBooks()
 {
+    std::cout << "保存するファイル名を入力してください。" << std::endl;
+    std::string filename;
+    std::cin >> filename;
+    auto tmpbooklist = bookshelf.getBookshelf();
+    std::ofstream ofs(filename);
 
+    if(!ofs)
+    {
+        std::cout << "ファイルが開けませんでした。" << std::endl;
+    }
+    for(auto&& book : tmpbooklist)
+    {
+        ofs << "書籍名," << book.getTitle() << ",出版社名," << book.getPublisher() << ",出版年月日," << book.getDate() << ",著者";
+        for(auto&& author : book.getAuthors())
+        {
+            ofs << "," << author;
+        }
+        ofs << std::endl;
+    }
+
+    ofs.close();
 }
 
 void loadBooks()
@@ -166,16 +197,16 @@ void loadBooks()
         
         boost::split(bookinfos, line, boost::is_any_of(","));
 
-        std::string title = bookinfos[0];
-        std::string publisher = bookinfos[1];
-        std::string date = bookinfos[2];
+        std::string title = bookinfos[1];
+        std::string publisher = bookinfos[3];
+        std::string date = bookinfos[5];
 
-        auto itr = bookinfos.begin() + 3;
+        auto authoritr = bookinfos.begin() + 7;
 
-        while (itr != bookinfos.end())
+        while (authoritr != bookinfos.end())
         {
-            authors.push_back(*itr);
-            itr++;
+            authors.push_back(*authoritr);
+            authoritr++;
         }
 
         Book book(title, publisher, date, authors);

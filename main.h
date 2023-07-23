@@ -5,27 +5,27 @@
 
 Bookshelf bookshelf;
 
-    void showAllBooks();
+void showAllBooks();
 
-    void showAllBooksByAuthor();
+void showAllBooksByAuthor();
 
-    void searchBooksByTitle();
+void searchBooksByTitle();
 
-    void searchBooksByAuthor();
+void searchBooksByAuthor();
 
-    void addBooks();
+void addBooks();
 
-    void deleteBooks();
+void deleteBooks();
 
-    void saveBooks();
+void saveBooks();
 
-    void loadBooks();
+void loadBooks();
 
-    void modifyBooks();
+void modifyBooks();
 
-    int menu();
+int menu();
 
-    void showBook(Book book);
+void showBook(Book book);
 
 
 
