@@ -38,6 +38,26 @@ class Book
             return this->authors;
         }
 
+        void setTitle(std::string title)
+        {
+            this->title = title;
+        }
+
+        void setPublisher(std::string publisher)
+        {
+            this->publisher = publisher;
+        }
+
+        void setDate(std::string date)
+        {
+            this->date = date;
+        }
+
+        void setAuthor(std::string author)
+        {
+            this->authors.push_back(author);
+        }
+
     private:
         std::string title;
         std::string publisher;

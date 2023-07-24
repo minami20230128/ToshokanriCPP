@@ -218,7 +218,30 @@ void loadBooks()
 
 void modifyBooks()
 {
+    std::cout << "情報を修正したい書籍の題名を入力してください。" << std::endl;
+    std::string title;
+    std::cin >> title;
+    int num;
+    std::cout << "どの情報を修正しますか？ 1,題名 2.出版社 3.出版年月日 4.著者。" << std::endl;
+    std::cin >> num;
+    std::cout << "修正後の情報を入力してください。" << std::endl;
+    std::string rightinfo;
+    std::cin >> rightinfo;
 
+    auto book = bookshelf.searchBook(title);
+
+    switch(num)
+    {
+        case 1:
+            book.setTitle(rightinfo);
+        case 2:
+            book.setPublisher(rightinfo);
+        case 3:
+            book.setDate(rightinfo);
+        case 4:
+            book.setAuthor(rightinfo);
+    }
+    
 }
     
 void showBook(Book book)
