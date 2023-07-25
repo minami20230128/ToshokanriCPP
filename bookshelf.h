@@ -60,4 +60,17 @@ class Bookshelf
                 }
             }
         }
+
+        std::vector<Book> sortBooksByAuthor()
+        {
+            auto ritr = booklist.rbegin();
+
+            while(ritr != booklist.rend())
+            {
+                prevbook = 
+                if(ritr->isFormar())
+                ritr++;
+
+            }
+        }
 };
