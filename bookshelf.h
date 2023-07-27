@@ -65,12 +65,16 @@ class Bookshelf
         {
             auto ritr = booklist.rbegin();
 
-            while(ritr != booklist.rend())
+            while(ritr != booklist.rend() - 1)
             {
-                prevbook = 
-                if(ritr->isFormar())
+                auto prevbook = ritr--;
+                if(ritr->isFormar(*prevbook))
+                {
+                    Book exchange = *prevbook;
+                    *prevbook = *ritr;
+                    *ritr = exchange;
+                }
                 ritr++;
-
             }
         }
 };
